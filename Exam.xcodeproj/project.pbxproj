@@ -19,7 +19,6 @@
 		000014EC2A36E5D10092589C /* Strage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000014EB2A36E5D10092589C /* Strage.swift */; };
 		000014ED2A36E5D10092589C /* Strage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000014EB2A36E5D10092589C /* Strage.swift */; };
 		000014EE2A36E5D10092589C /* Strage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000014EB2A36E5D10092589C /* Strage.swift */; };
-		001626F32E392E8500DC02D7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001626F22E392E8400DC02D7 /* Persistence.swift */; };
 		002BB68F2CF8B77500495134 /* exam.gif in Resources */ = {isa = PBXBuildFile; fileRef = 002BB68E2CF8B77500495134 /* exam.gif */; };
 		002BB6902CF8B77500495134 /* exam.gif in Resources */ = {isa = PBXBuildFile; fileRef = 002BB68E2CF8B77500495134 /* exam.gif */; };
 		002BB6912CF8B77500495134 /* exam.gif in Resources */ = {isa = PBXBuildFile; fileRef = 002BB68E2CF8B77500495134 /* exam.gif */; };
@@ -80,7 +79,6 @@
 		000014E32A36AB9A0092589C /* ExamApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamApp.swift; sourceTree = "<group>"; };
 		000014E72A36ABB90092589C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		000014EB2A36E5D10092589C /* Strage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strage.swift; sourceTree = "<group>"; };
-		001626F22E392E8400DC02D7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		002BB68E2CF8B77500495134 /* exam.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = exam.gif; sourceTree = "<group>"; };
 		007CCBC62A369EA400083A69 /* Exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007CCBCE2A369EA400083A69 /* Exam.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Exam.xcdatamodel; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				00DC110E2AB9F8E600FA8768 /* Archive.swift */,
 				007CCBFF2A369F1C00083A69 /* MyPage.swift */,
 				00E6B4202E391FE100270F69 /* Utils.swift */,
-				001626F22E392E8400DC02D7 /* Persistence.swift */,
 				000014E72A36ABB90092589C /* Assets.xcassets */,
 				002BB68E2CF8B77500495134 /* exam.gif */,
 				007CCBD42A369EA600083A69 /* Exam.entitlements */,
@@ -386,7 +383,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				001626F32E392E8500DC02D7 /* Persistence.swift in Sources */,
 				007CCBCF2A369EA400083A69 /* Exam.xcdatamodeld in Sources */,
 				007CCC012A369F1C00083A69 /* StartUp.swift in Sources */,
 				000014E42A36AB9B0092589C /* ExamApp.swift in Sources */,

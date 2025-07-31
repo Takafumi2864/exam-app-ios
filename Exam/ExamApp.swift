@@ -15,12 +15,10 @@ struct ExamApp: SwiftUI.App {
         let delegate = NotificationDelegate.shared
         center.delegate = delegate
     }
-    let persistenceController = PersistenceController.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
             FirstView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .transition(.opacity)
                 .environmentObject(UserSettings())
                 .environmentObject(AppData())
