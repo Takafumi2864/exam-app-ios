@@ -150,19 +150,17 @@ GitHub: [https://github.com/Takafumi2864](https://github.com/Takafumi2864)
 ## 実機
 
 ### 時間配分
-<img src="screenshots/allotment.jpg" width="300" alt="時間配分">
-
-### 時間配分（個別）
-<img src="screenshots/allotment2.jpg" width="300" alt="時間配分（個別）">
-
-### タイマー
-<img src="screenshots/timer.jpg" width="300" alt="タイマー">
+<p>
+  <img src="screenshots/allotment.jpg" width="300" alt="時間配分" style="margin-right: 10px;">
+  <img src="screenshots/allotment2.jpg" width="300" alt="時間配分（個別）" style="margin-right: 10px;">
+  <img src="screenshots/timer.jpg" width="300" alt="タイマー">
+</p>
 
 ### リスニング
-<img src="screenshots/listening.jpg" width="300" alt="リスニング">
-
-### リスニング（個別）
-<img src="screenshots/listening2.jpg" width="300" alt="リスニング（個別）">
+<p>
+  <img src="screenshots/listening.jpg" width="300" alt="リスニング" style="margin-right: 10px;">
+  <img src="screenshots/listening2.jpg" width="300" alt="リスニング（個別）">
+</p>
 
 ### 記録
 <img src="screenshots/archive.jpg" width="300" alt="記録">
