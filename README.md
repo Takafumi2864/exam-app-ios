@@ -1,5 +1,84 @@
 # exam-app-ios
 
+**A study support iOS app specialized for practicing past exam questions**
+
+This iOS application helps users efficiently prepare for exams by offering features such as time management, listening practice, and visualized study logs.
+
+---
+
+## Features
+
+### Time Management
+- Create tests composed of multiple sections
+- Customize each section with title, icon, color, time limit, and scheduled date/time
+- Add detailed elements within sections (e.g., “Question 1: 30 minutes”) for precise control
+- Display remaining time with an in-app clock
+- Supports pause, resume, and saving during test sessions
+
+### Listening Practice
+- Load audio files for listening exercises
+- Combine multiple audio segments to create custom study flows
+- Fine-grained control over playback: play, pause, repeat, etc.
+
+### Study Logs
+- Save test results by date
+- Visualize time spent per section using pie charts
+- View time trends across tests via bar graphs
+- Includes a feature to delete saved records
+
+### Notification System
+- Schedule notifications based on test start times
+- Support for notifications at the end of tests or per section
+- Choose from multiple notification sounds
+
+### User Authentication
+- Login and sign-up via Google, Apple (pending verification), or Email
+- Secure authentication using Firebase Authentication
+- Users can change display names and sign out
+
+### Settings
+- Customize clock display (analog/digital)
+- Toggle notifications on/off (test day, start/end time, in-app alerts)
+- View Privacy Policy and Terms of Service
+
+---
+
+## 🛠 Tech Stack
+
+| Category         | Technologies                             |
+|------------------|------------------------------------------|
+| Frontend         | SwiftUI                                  |
+| Authentication   | Firebase Authentication (Google, Apple, Email/Password) |
+| Database         | Firebase Firestore                       |
+| Charts           | Charts (Swift Charts)                    |
+| Audio Processing | AVFoundation                             |
+| Notifications    | UserNotifications                        |
+| Others           | AudioToolbox, AuthenticationServices, CryptoKit, Security |
+
+---
+
+## Development & Build
+
+This project is currently in personal development.  
+To run or build the app, please use Xcode.
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Author
+
+Developer: **Takafumi Miyata** (The University of Tokyo, English Literature Major)  
+GitHub: [https://github.com/Takafumi2864](https://github.com/Takafumi2864)
+
+
+
+
+## 日本語版 README
 **過去問演習に特化した学習サポート iOS アプリ**
 
 試験合格に向けた効率的な学習を支援するため、時間配分の管理、リスニング練習、学習記録の可視化などの機能を備えた iOS アプリです。
