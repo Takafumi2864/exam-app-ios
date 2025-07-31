@@ -150,25 +150,25 @@ GitHub: [https://github.com/Takafumi2864](https://github.com/Takafumi2864)
 ## 実機
 
 ### 時間配分
-![時間配分](screenshots/allotment.png)
+![時間配分](screenshots/allotment.jpg)
 
 ### 時間配分（個別）
-![時間配分（個別）](screenshots/allotment2.png)
+![時間配分（個別）](screenshots/allotment2.jpg)
 
 ### タイマー
-![タイマー](screenshots/timer.png)
+![タイマー](screenshots/timer.jpg)
 
 ### リスニング
-![リスニング](screenshots/listening.png)
+![リスニング](screenshots/listening.jpg)
 
 ### リスニング（個別）
-![リスニング（個別）](screenshots/listening2.png)
+![リスニング（個別）](screenshots/listening2.jpg)
 
 ### 記録
-![記録](screenshots/archive.png)
+![記録](screenshots/archive.jpg)
 
 ### プロフィール
-![プロフィール](screenshots/profile.png)
+![プロフィール](screenshots/profile.jpg)
 
 
 ---
