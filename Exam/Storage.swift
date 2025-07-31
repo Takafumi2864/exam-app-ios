@@ -96,8 +96,12 @@ class UserData: ObservableObject {
             self.done = true
         }
     }
-    
-    var db = Firestore.firestore().collection("users").document(Auth.auth().currentUser?.uid ?? "Test")
+    var db: DocumentReference {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            fatalError("User not authenticated")
+        }
+        return Firestore.firestore().collection("users").document(uid)
+    }
     func setData(){
         var dictionary = Dictionary<String, Array<Dictionary<String, String>>>()
         var dictionary2 = Dictionary<String, Dictionary<String, Array<Dictionary<String, String>>>>()
@@ -106,7 +110,7 @@ class UserData: ObservableObject {
         
         
         var i = 0
-        while i < 3 {
+        for i in 0..<3  {
             dictionary.updateValue(list[i], forKey: "section\(String(i + 1))")
             var dictionary2_1 = Dictionary<String, Array<Dictionary<String, String>>>()
             var j = 0
@@ -115,11 +119,7 @@ class UserData: ObservableObject {
                 j += 1
             }
             dictionary2.updateValue(dictionary2_1, forKey: "section\(String(i + 1))")
-            
             archive_dictionary.updateValue(archive[i], forKey: "section\(String(i + 1))")
-            
-            
-            i += 1
         }
         let data = ["save": save, "allotment": ["section": section, "list": dictionary, "component": dictionary2] as [String : Any], "listening": listening, "archive": archive_dictionary]
         db.setData(data)
@@ -147,7 +147,7 @@ class UserData: ObservableObject {
                 let archive_data = data?["archive"] as! Dictionary<String, Array<Dictionary<String, Array<Dictionary<String, String>>>>>
                 
                 
-                while i < 3 {
+                for i in 0..<3 {
                     firestore_list.append(dictionary["section\(String(i + 1))"]!)
                     var dictionary2_1 = Array<Array<Dictionary<String, String>>>()
                     var j = 0
@@ -156,11 +156,7 @@ class UserData: ObservableObject {
                         j += 1
                     }
                     firestore_component.append(dictionary2_1)
-                    
                     firestore_archive.append(archive_data["section\(String(i + 1))"]!)
-                    
-                    
-                    i += 1
                 }
                 save = firestore_save
                 section = firestore_section

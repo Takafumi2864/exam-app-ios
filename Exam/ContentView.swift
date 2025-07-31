@@ -463,25 +463,39 @@ struct Listening_TimerView: View {
     }
     func manageAudios() async {
         for element in actual_listening {
-            if Task.isCancelled {return}
-            await playAudio(element: element)
+            if Task.isCancelled { return }
+            await playAudio(element)
         }
     }
-    func playAudio(element: [String: String]) async {
-        if element["type"] == "0" {
-            let url = files[holders.firstIndex(of: element["holder"]!)!]
+    func playAudio(_ element: [String: String]) async {
+        guard let type = element["type"] else { return }
+
+        if type == "0" {
+            guard let holder = element["holder"],
+                  let index = holders.firstIndex(of: holder),
+                  index < files.count else {
+                print("音声ファイルの取得に失敗しました")
+                return
+            }
+
+            let url = files[index]
             do {
                 let player = try AVAudioPlayer(contentsOf: url)
                 self.progress = url.lastPathComponent
                 player.play()
+
                 while player.isPlaying {
-                    try await Task.sleep(nanoseconds: 100_000_000)
+                    try await Task.sleep(nanoseconds: 100_000_000) // 0.1秒ごとにチェック
                 }
             } catch {
-                print("Error playing audio file: \(error.localizedDescription)")
+                print("音声再生中にエラー: \(error.localizedDescription)")
             }
-        } else {
-            try? await Task.sleep(nanoseconds: UInt64(Double(element["time"]!)!) * 1_000_000_000)
+
+        } else if type == "1" {
+            if let timeStr = element["time"],
+               let seconds = Double(timeStr) {
+                try? await Task.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
+            }
         }
     }
 }
