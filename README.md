@@ -146,6 +146,31 @@ GitHub: [https://github.com/Takafumi2864](https://github.com/Takafumi2864)
 
 ※現在は個人開発中のプロジェクトのため、Xcode でのビルド・実行が前提です。
 
+
+## 実機
+
+### 時間配分
+![時間配分](screenshots/allotment.png)
+
+### 時間配分（個別）
+![時間配分（個別）](screenshots/allotment2.png)
+
+### タイマー
+![タイマー](screenshots/timer.png)
+
+### リスニング
+![リスニング](screenshots/listening.png)
+
+### リスニング（個別）
+![リスニング（個別）](screenshots/listening2.png)
+
+### 記録
+![記録](screenshots/archive.png)
+
+### プロフィール
+![プロフィール](screenshots/profile.png)
+
+
 ---
 
 ## ライセンス
