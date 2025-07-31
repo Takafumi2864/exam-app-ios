@@ -1,5 +1,7 @@
 # exam-app-ios
+[English](#english) | [日本語](#日本語)
 
+## English
 **A study support iOS app specialized for practicing past exam questions**
 
 This iOS application helps users efficiently prepare for exams by offering features such as time management, listening practice, and visualized study logs.
@@ -79,10 +81,10 @@ GitHub: [https://github.com/Takafumi2864](https://github.com/Takafumi2864)
 
 
 
----
+
 ---
 
-## 日本語版 README
+## 日本語
 **過去問演習に特化した学習サポート iOS アプリ**
 
 試験合格に向けた効率的な学習を支援するため、時間配分の管理、リスニング練習、学習記録の可視化などの機能を備えた iOS アプリです。
