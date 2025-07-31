@@ -78,6 +78,10 @@ GitHub: [https://github.com/Takafumi2864](https://github.com/Takafumi2864)
 
 
 
+
+---
+---
+
 ## 日本語版 README
 **過去問演習に特化した学習サポート iOS アプリ**
 
