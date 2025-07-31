@@ -165,7 +165,7 @@ GitHub: [https://github.com/Takafumi2864](https://github.com/Takafumi2864)
 ### 記録
 <img src="screenshots/archive.jpg" width="300" alt="記録">
 
-### プロフィール
+### マイページ
 <img src="screenshots/profile.jpg" width="300" alt="プロフィール">
 
 ---
