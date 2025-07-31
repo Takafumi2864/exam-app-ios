@@ -1,10 +1,3 @@
-//
-//  Persistence.swift
-//  Exam
-//
-//  Created by 宮田尚文 on 2023/06/12.
-//
-
 import CoreData
 
 struct PersistenceController {

@@ -1,10 +1,3 @@
-//
-//  Archive.swift
-//  Exam
-//
-//  Created by 宮田尚文 on 2023/09/20.
-//
-
 import SwiftUI
 import Charts
 import Foundation

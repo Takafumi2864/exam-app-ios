@@ -1,23 +1,6 @@
-//
-//  View1.swift
-//  Exam
-//
-//  Created by 宮田尚文 on 2023/05/28.
-//
-
 import SwiftUI
 import Foundation
 import AVFoundation
-
-/*struct View1_Previews: PreviewProvider {
-    static var previews: some View {
-        @State var tabZIndex: Double = 1.0
-        View1()
-            .environmentObject(AppData())
-            .environmentObject(UserData())
-    }
-}*/
-
 
 
 struct Allotment: View {
@@ -26,15 +9,13 @@ struct Allotment: View {
     @State private var enable = true
     @State private var active1 = false
     @State private var active2 = false
-    @State private var active3 = false
-    @State private var active = false
     @State var showOverlay1 = false
     @State var showOverlay2 = false
     @State var editMode: EditMode = .inactive
     @State var showAlert: Bool = false
     @State var alert_section_index: Int = 0
     @State var alert_offsets: IndexSet = []
-    
+    @State var add_section_index: Int = 0
     @State var notice_section_index: Int = 0
     @State var notice_index: Int = 0
     var body: some View {
@@ -75,29 +56,16 @@ struct Allotment: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu{
-                        Button(action: {
-                            userData.list[0].append(["name": "", "image": "pencil", "color": "primary", "time": "0", "date": "today"])
-                            userData.component[0].append([["holder": "1", "name": "", "minute": "0"]])
-                            userData.archive[0].append(Dictionary<String, Array<Dictionary<String, String>>>())
-                            active1.toggle()
-                        }){
-                            Text(userData.section[0])
-                        }
-                        Button(action: {
-                            userData.list[1].append(["name": "", "image": "pencil", "color": "primary", "time": "0", "date": "today"])
-                            userData.component[1].append([["holder": "1", "name": "", "minute": "0"]])
-                            userData.archive[1].append(Dictionary<String, Array<Dictionary<String, String>>>())
-                            active2.toggle()
-                        }){
-                            Text(userData.section[1])
-                        }
-                        Button(action: {
-                            userData.list[2].append(["name": "", "image": "pencil", "color": "primary", "time": "0", "date": "today"])
-                            userData.component[2].append([["holder": "1", "name": "", "minute": "0"]])
-                            userData.archive[2].append(Dictionary<String, Array<Dictionary<String, String>>>())
-                            active3.toggle()
-                        }) {
-                            Text(userData.section[2])
+                        ForEach(Array(userData.section.enumerated()), id: \.element){ section_index, section_name in
+                            Button(action: {
+                                userData.list[section_index].append(["name": "", "image": "pencil", "color": "primary", "time": "0", "date": "today"])
+                                userData.component[section_index].append([["holder": "1", "name": "", "minute": "0"]])
+                                userData.archive[section_index].append(Dictionary<String, Array<Dictionary<String, String>>>())
+                                add_section_index = section_index
+                                active1.toggle()
+                            }){
+                                Text(section_name)
+                            }
                         }
                     }
                     label: {
@@ -115,21 +83,11 @@ struct Allotment: View {
                 }
             }
             .navigationDestination(isPresented: $active1, destination: {
-                if userData.list[0].count > 0 {
-                    ChildView(section_index: 0, index: userData.list[0].count - 1)
+                if userData.list[add_section_index].count > 0 {
+                    ChildView(section_index: add_section_index, index: userData.list[add_section_index].count - 1)
                 }
             })
             .navigationDestination(isPresented: $active2, destination: {
-                if userData.list[1].count > 0 {
-                    ChildView(section_index: 1, index: userData.list[1].count - 1)
-                }
-            })
-            .navigationDestination(isPresented: $active3, destination: {
-                if userData.list[2].count > 0 {
-                    ChildView(section_index: 2, index: userData.list[2].count - 1)
-                }
-            })
-            .navigationDestination(isPresented: $active, destination: {
                 ChildView(section_index: notice_section_index, index: notice_index)
             })
             .sheet(isPresented: $showOverlay1, onDismiss: {}) {
@@ -146,7 +104,7 @@ struct Allotment: View {
                 if let response = appData.notice_response {
                     notice_section_index = response.notification.request.content.userInfo["section_index"]! as! Int
                     notice_index = response.notification.request.content.userInfo["index"]! as! Int
-                    active = true
+                    active2 = true
                 }
             }
         }
@@ -714,13 +672,6 @@ struct ChildView: View {
         }
     }
 }
-func dfS_D(date: String) -> Date{
-    let df = DateFormatter()
-    df.locale = Locale(identifier: "ja_JP")
-    df.dateStyle = .medium
-    df.timeStyle = .short
-    return df.date(from: date) ?? Date()
-}
 
 
 // MARK: EditTime
@@ -829,13 +780,6 @@ struct EditTime: View {
         df.dateStyle = .none
         df.timeStyle = .short
         return df.string(from: date)
-    }
-    func dfS_D(date: String) -> Date{
-        let df = DateFormatter()
-        df.locale = Locale(identifier: "ja_JP")
-        df.dateStyle = .medium
-        df.timeStyle = .short
-        return df.date(from: date) ?? Date()
     }
     func start_end(time: Int, date: Date) -> Date{
         return Calendar.current.date(byAdding: .minute, value: time, to: date)!
@@ -1051,34 +995,6 @@ enum FocusField: Hashable {
     case name
     case minute
 }
-
-
-
-
-extension Color {
-    init?(wordName: String) {
-        switch wordName {
-        case "primary":     self = .primary
-        case "gray":        self = .gray
-        case "indigo":      self = .indigo
-        case "cyan":        self = .cyan
-        case "teal":        self = .teal
-        case "yellow":      self = .yellow
-        case "pink":        self = .pink
-        case "brown":       self = .brown
-        case "purple":      self = .purple
-        case "blue":        self = .blue
-        case "green":       self = .green
-        case "uiGreen":     self = Color(UIColor.green)
-        case "orange":      self = .orange
-        case "red":         self = .red
-        case "uiRed":       self = Color(UIColor.red)
-        default:            self = .primary
-        }
-    }
-}
-
-
 
 
 

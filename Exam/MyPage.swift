@@ -1,10 +1,3 @@
-//
-//  View4.swift
-//  Exam
-//
-//  Created by 宮田尚文 on 2023/05/31.
-//
-
 import SwiftUI
 import UIKit
 import FirebaseAuthUI

@@ -1,10 +1,3 @@
-//
-//  View2.swift
-//  Exam
-//
-//  Created by 宮田尚文 on 2023/05/28.
-//
-
 import UIKit
 import SwiftUI
 import Foundation
@@ -215,7 +208,7 @@ struct Listening_ChildView: View {
                 Menu{
                     Button(action: {
                         userData.listening[key]!.append(["holder": UUID().uuidString, "type": "0", "time": "0"])
-                        Lsitening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
+                        Listening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
                     }){
                         HStack {
                             Image(systemName: listening_dictionary2["0"]!)
@@ -225,7 +218,7 @@ struct Listening_ChildView: View {
                     Button(action: {
                         userData.listening[key]!.append(["holder": UUID().uuidString, "type": "1", "time": "0"])
                         offset.append(0)
-                        Lsitening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
+                        Listening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
                     }){
                         HStack {
                             Image(systemName: listening_dictionary2["1"]!)
@@ -237,7 +230,7 @@ struct Listening_ChildView: View {
                         userData.listening[key]!.append(["holder": UUID().uuidString, "type": "3", "time": "0"])
                         offset.append(0)
                         offset.append(0)
-                        Lsitening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
+                        Listening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
                     }) {
                         HStack {
                             Image(systemName: listening_dictionary2["2"]!)
@@ -267,7 +260,7 @@ struct Listening_ChildView: View {
                     ForEach(Array(userData.listening[key]!.enumerated()), id: \.element) { index, element in
                         Listening_SubView2(key: key, index: index, type: element["type"]!, offset: offset[index])
                             .onAppear {
-                                Lsitening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
+                                Listening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
                             }
                     }
                     .onMove(perform: { source, destination in
@@ -287,7 +280,7 @@ struct Listening_ChildView: View {
                                 userData.listening[key]!.move(fromOffsets: [index], toOffset: destination)
                             }
                         }
-                        Lsitening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
+                        Listening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
                     })
                     .onDelete(perform: { offsets in
                         for index in offsets {
@@ -296,7 +289,7 @@ struct Listening_ChildView: View {
                             }
                         }
                         userData.listening[key]!.remove(atOffsets: offsets)
-                        Lsitening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
+                        Listening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
                     })
                     
                 }
@@ -360,7 +353,7 @@ struct Listening_ChildView: View {
         }
         .onAppear{
             appData.tabZIndex = 2.0
-            Lsitening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
+            Listening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
         }
         .onWillDisappear{
             appData.tabZIndex = 0.0
@@ -452,7 +445,7 @@ struct FileImportButton: View {
         Button(action: {
             keys2 = keys.compactMap({userData.listening.keys.contains($0) ? $0 : nil})
             if !keys2.isEmpty {
-                Lsitening_Manage_Repeat(listening: userData.listening[keys2[importsIndex]]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
+                Listening_Manage_Repeat(listening: userData.listening[keys2[importsIndex]]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
                 showFileImporter = true
             } else {
                 start_listening = true
@@ -481,7 +474,7 @@ struct FileImportButton: View {
                         }
                         if importsIndex < keys2.count - 1 {
                             importsIndex += 1
-                            Lsitening_Manage_Repeat(listening: userData.listening[keys2[importsIndex]]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
+                            Listening_Manage_Repeat(listening: userData.listening[keys2[importsIndex]]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
                             showAlert2 = true
                         } else {
                             start_listening.toggle()
@@ -512,7 +505,7 @@ struct FileImportButton: View {
 
 
 
-func Lsitening_Manage_Repeat(listening: [[String: String]], indices1: Binding<[Int]>, indices2: Binding<[Int]>, offset: Binding<[Int]>, indices3: Binding<[Int: Int]>, actual_listening: Binding<[[String: String]]>) {
+func Listening_Manage_Repeat(listening: [[String: String]], indices1: Binding<[Int]>, indices2: Binding<[Int]>, offset: Binding<[Int]>, indices3: Binding<[Int: Int]>, actual_listening: Binding<[[String: String]]>) {
     indices1.wrappedValue = listening.enumerated().compactMap { (index, dictionary) -> Int? in
         if dictionary["type"] == "2" {
             return index
