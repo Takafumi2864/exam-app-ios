@@ -13,8 +13,6 @@ import AuthenticationServices
 import CryptoKit
 import Security
 
-import WebKit
-
 
 
 struct FirstView: View {
@@ -83,7 +81,7 @@ struct Welcome: View {
                     .tag(2)
                 Welcome2()
                     .tag(3)
-                Welcome3()
+                Welcome4()
                     .tag(4)
             }
             .tabViewStyle(.page)
@@ -188,13 +186,13 @@ struct Welcome1: View {
 struct Welcome2: View {
     @State var showFullScreen: Bool = false
     var body: some View {
-        Text("123")
+        Text("アプリの説明を追加")
     }
 }
 
 
 
-struct Welcome3: View {
+struct Welcome4: View {
     @StateObject private var appleSignIn = AppleSignIn()
     @State var EmailSingIn: Bool = false
     @State var showPrivacyPolicy: Bool = false
@@ -380,6 +378,7 @@ struct Welcome3: View {
 }
 
 struct EmailSignInView: View {
+    @State var isSignUp = true
     @State private var mailAddress = ""
     @State private var password = ""
     @State private var passwordConfirm = ""
@@ -387,15 +386,27 @@ struct EmailSignInView: View {
     @State private var errorMessage = ""
     var body: some View {
         VStack {
+            let isSignUpText = isSignUp ? "新規登録" : "ログイン"
             VStack {
-                Text("メールで新規登録・ログイン")
+                Text("メールで\(isSignUpText)")
                     .font(.system(size: 25).bold())
                     .padding()
-                Text("メールアドレスとパスワードを入力してください。\nパスワードは、小文字英字・数字を含む６〜20字で設定してください。")
+                Text("メールアドレスとパスワードを入力してください。\n\(isSignUp ? "パスワードは、小文字英字・数字を含む６〜20字で設定してください。" : "")")
                     .font(.system(size: 20))
                     .frame(width: UIScreen.main.bounds.width - 40, alignment: .leading)
                     .padding(.leading, 20)
                     .padding(.vertical, 10)
+                HStack {
+                    Spacer()
+                    Text(isSignUp ? "既に登録済みの方は" : "新規登録は")
+                        .font(.system(size: 15))
+                    Text("こちら")
+                        .font(.system(size: 15))
+                        .foregroundColor(.blue)
+                        .onTapGesture {
+                            isSignUp.toggle()
+                        }
+                }
             }
             VStack {
                 HStack {
@@ -416,12 +427,33 @@ struct EmailSignInView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .textContentType(.password)
                     .onSubmit() {
-                        EmailSignIn()
+                        if !isSignUp {
+                            EmailSignIn()
+                        }
                     }
             }
             .padding()
+            if isSignUp {
+                VStack {
+                    HStack {
+                        Text("パスワード確認")
+                        Spacer()
+                    }
+                    SecureField("英数字・６〜20字", text: $passwordConfirm)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .textContentType(.password)
+                        .onSubmit() {
+                            if isSignUp {
+                                EmailSignUp()
+                            } else {
+                                EmailSignIn()
+                            }
+                        }
+                }
+                .padding()
+            }
             Button(action: {EmailSignIn()}) {
-                Text("新規登録・ログイン")
+                Text(isSignUpText)
                     .font(.system(size :20).bold())
                     .foregroundColor(Color(UIColor.systemBackground))
                     .background(
@@ -442,7 +474,12 @@ struct EmailSignInView: View {
             Text(errorMessage)
         }
     }
-    private func EmailSignIn() {
+    private func EmailSignUp() {
+        if self.password != self.passwordConfirm {
+            errorMessage = "パスワードが一致しません"
+            isShowAlert = true
+            return
+        }
         Auth.auth().createUser(withEmail: self.mailAddress, password: self.password) { authResult, error in
             if let error = error as NSError?, let errorCode = AuthErrorCode.Code(rawValue: error.code) {
                 switch errorCode {
@@ -450,7 +487,8 @@ struct EmailSignInView: View {
                     self.errorMessage = "メールアドレスの形式が正しくありません"
                     self.isShowAlert = true
                 case .emailAlreadyInUse:
-                    self.EmailSignIn2()
+                    self.errorMessage = "メールアドレスがすでに使われています"
+                    self.isShowAlert = true
                 case .weakPassword:
                     self.errorMessage = "パスワードは６〜20字で入力してください"
                     self.isShowAlert = true
@@ -467,7 +505,7 @@ struct EmailSignInView: View {
             }
         }
     }
-    private func EmailSignIn2() {
+    private func EmailSignIn() {
         Auth.auth().signIn(withEmail: self.mailAddress, password: self.password) { authResult, error in
             if let error = error as NSError?, let errorCode = AuthErrorCode.Code(rawValue: error.code) {
                 switch errorCode {

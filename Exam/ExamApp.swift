@@ -16,6 +16,7 @@ struct ExamApp: SwiftUI.App {
         center.delegate = delegate
     }
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var authObserver = FirebaseAuthStateObserver()
     var body: some Scene {
         WindowGroup {
             FirstView()
@@ -23,10 +24,10 @@ struct ExamApp: SwiftUI.App {
                 .environmentObject(UserSettings())
                 .environmentObject(AppData())
                 .environmentObject(UserData())
-                .environmentObject(FirebaseAuthStateObserver())
+                .environmentObject(authObserver)
                 .onAppear(){
                     if Auth.auth().currentUser != nil{
-                        FirebaseAuthStateObserver().isSignin = true
+                        authObserver.isSignin = true
                     }
                 }
         }

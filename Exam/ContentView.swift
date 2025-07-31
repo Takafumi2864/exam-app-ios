@@ -442,7 +442,7 @@ struct Listening_TimerView: View {
                 .frame(width: 78, height: 78)
         }
         .onAppear() {
-            Lsitening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
+            Listening_Manage_Repeat(listening: userData.listening[key]!, indices1: $indices, indices2: $indices2, offset: $offset, indices3: $indices3, actual_listening: $actual_listening)
             self.holders = userData.listening[key]!.compactMap {
                 if $0["type"] == "0" {
                     return $0["holder"]

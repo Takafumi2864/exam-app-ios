@@ -16,12 +16,10 @@
 		000014E82A36ABB90092589C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000014E72A36ABB90092589C /* Assets.xcassets */; };
 		000014E92A36ABB90092589C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000014E72A36ABB90092589C /* Assets.xcassets */; };
 		000014EA2A36ABB90092589C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000014E72A36ABB90092589C /* Assets.xcassets */; };
-		000014EC2A36E5D10092589C /* Strage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000014EB2A36E5D10092589C /* Strage.swift */; };
-		000014ED2A36E5D10092589C /* Strage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000014EB2A36E5D10092589C /* Strage.swift */; };
-		000014EE2A36E5D10092589C /* Strage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000014EB2A36E5D10092589C /* Strage.swift */; };
 		002BB68F2CF8B77500495134 /* exam.gif in Resources */ = {isa = PBXBuildFile; fileRef = 002BB68E2CF8B77500495134 /* exam.gif */; };
 		002BB6902CF8B77500495134 /* exam.gif in Resources */ = {isa = PBXBuildFile; fileRef = 002BB68E2CF8B77500495134 /* exam.gif */; };
 		002BB6912CF8B77500495134 /* exam.gif in Resources */ = {isa = PBXBuildFile; fileRef = 002BB68E2CF8B77500495134 /* exam.gif */; };
+		0037A5432E3BB2FF00FF21BA /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0037A5422E3BB2FF00FF21BA /* Storage.swift */; };
 		006AB3802CE23EBB008F18B6 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 006AB37F2CE23EBB008F18B6 /* SwiftUICharts */; };
 		007CCBCF2A369EA400083A69 /* Exam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 007CCBCD2A369EA400083A69 /* Exam.xcdatamodeld */; };
 		007CCBD72A369EA600083A69 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 007CCBD62A369EA600083A69 /* Preview Assets.xcassets */; };
@@ -78,8 +76,8 @@
 		000014DF2A36A57E0092589C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		000014E32A36AB9A0092589C /* ExamApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamApp.swift; sourceTree = "<group>"; };
 		000014E72A36ABB90092589C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		000014EB2A36E5D10092589C /* Strage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strage.swift; sourceTree = "<group>"; };
 		002BB68E2CF8B77500495134 /* exam.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = exam.gif; sourceTree = "<group>"; };
+		0037A5422E3BB2FF00FF21BA /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		007CCBC62A369EA400083A69 /* Exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007CCBCE2A369EA400083A69 /* Exam.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Exam.xcdatamodel; sourceTree = "<group>"; };
 		007CCBD42A369EA600083A69 /* Exam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Exam.entitlements; sourceTree = "<group>"; };
@@ -169,7 +167,7 @@
 			children = (
 				000014E32A36AB9A0092589C /* ExamApp.swift */,
 				007CCBFB2A369F1C00083A69 /* StartUp.swift */,
-				000014EB2A36E5D10092589C /* Strage.swift */,
+				0037A5422E3BB2FF00FF21BA /* Storage.swift */,
 				007CCC002A369F1C00083A69 /* ContentView.swift */,
 				007CCBFC2A369F1C00083A69 /* Allotment.swift */,
 				007CCBFE2A369F1C00083A69 /* Listening.swift */,
@@ -389,10 +387,10 @@
 				007CCC042A369F1C00083A69 /* Listening.swift in Sources */,
 				007CCC062A369F1C00083A69 /* ContentView.swift in Sources */,
 				007CCC052A369F1C00083A69 /* MyPage.swift in Sources */,
-				000014EC2A36E5D10092589C /* Strage.swift in Sources */,
 				00DC110F2AB9F8E600FA8768 /* Archive.swift in Sources */,
 				007CCC022A369F1C00083A69 /* Allotment.swift in Sources */,
 				00E6B4212E391FEE00270F69 /* Utils.swift in Sources */,
+				0037A5432E3BB2FF00FF21BA /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +399,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				000014E52A36AB9B0092589C /* ExamApp.swift in Sources */,
-				000014ED2A36E5D10092589C /* Strage.swift in Sources */,
 				007CCBE12A369EA600083A69 /* ExamTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,7 +408,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				000014E62A36AB9B0092589C /* ExamApp.swift in Sources */,
-				000014EE2A36E5D10092589C /* Strage.swift in Sources */,
 				007CCBEB2A369EA600083A69 /* ExamUITests.swift in Sources */,
 				007CCBED2A369EA600083A69 /* ExamUITestsLaunchTests.swift in Sources */,
 			);

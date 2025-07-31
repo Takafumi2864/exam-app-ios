@@ -70,7 +70,7 @@ class UserSettings: ObservableObject {
             notice_sound = defaults.integer(forKey: "notice_sound")
             section_notice = defaults.bool(forKey: "section_notice")
             test = defaults.bool(forKey: "test")
-            test = defaults.bool(forKey: "test2")
+            test2 = defaults.bool(forKey: "test2")
         }
     }
 }
@@ -92,7 +92,9 @@ class UserData: ObservableObject {
     @Published var archive = [[["2022年2月22日　22:22": [["holder": "1", "time": "2"]]]], Array<Dictionary<String, Array<Dictionary<String, String>>>>(), Array<Dictionary<String, Array<Dictionary<String, String>>>>()]
     
     init(){
-        getData()
+        getData {
+            self.done = true
+        }
     }
     
     var db = Firestore.firestore().collection("users").document(Auth.auth().currentUser?.uid ?? "Test")
@@ -122,7 +124,7 @@ class UserData: ObservableObject {
         let data = ["save": save, "allotment": ["section": section, "list": dictionary, "component": dictionary2] as [String : Any], "listening": listening, "archive": archive_dictionary]
         db.setData(data)
     }
-    func getData() {
+    func getData(completion: @escaping () -> Void) {
         var firestore_section = Array<String>()
         var firestore_list = Array<Array<Dictionary<String, String>>>()
         var firestore_component = Array<Array<Array<Dictionary<String, String>>>>()
@@ -166,10 +168,10 @@ class UserData: ObservableObject {
                 component = firestore_component
                 listening = firestore_listening
                 archive = firestore_archive
-                done = true
+                completion()
             } else {
                 print("Document does not exist")
-                done = true
+                completion()
             }
         }
     }

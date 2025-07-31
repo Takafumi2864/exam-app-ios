@@ -165,18 +165,6 @@ struct Archive: View {
     }
 }
 
-/*
-Archive2(section_index: section_index, selectedIndex: $indexes[section_index])
-struct Archive2: View {
-    @EnvironmentObject var userData: UserData
-    let section_index: Int
-    @Binding var selectedIndex: Int
-    var body: some View {
-        VStack {
-        }
-    }
-}*/
-
 
 struct Archive_SubView: View {
     let date: String
